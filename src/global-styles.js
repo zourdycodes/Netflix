@@ -29,5 +29,9 @@ export const GlobalStyles = createGlobalStyle`
   border-radius: 10px;
   }
 
+  ::selection {
+    background-color: red;
+    color: white;
+  }
 
 `;

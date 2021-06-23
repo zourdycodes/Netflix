@@ -47,7 +47,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  margin-bottom: 1px;
+  margin-bottom: 5px;
   font-size: 26px;
   font-weight: normal;
   background: #303030;
@@ -75,8 +75,10 @@ export const Body = styled.div`
   white-space: pre-wrap;
   user-select: none;
   overflow: hidden;
+  padding: 0 10px;
+  margin-top: -10px;
 
-  color: #999b84;
+  color: #92967d;
   &.closed {
     max-height: 0;
     overflow: hidden;

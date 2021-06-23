@@ -9,6 +9,9 @@ import {
   Header,
 } from "./styles/accordion";
 
+//warn to know what value in the state ==>
+//warn ==> <pre>{JSON.stringify(yourState, null, 2)}</pre>
+
 const ToggleContext = createContext();
 
 export default function Accordion({ children, ...restProps }) {
