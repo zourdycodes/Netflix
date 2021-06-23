@@ -1,3 +1,9 @@
 import React from "react";
 
-export default function SignUp() {}
+export default function Signup() {
+  return (
+    <>
+      <h1>Hello From Sign un</h1>
+    </>
+  );
+}
