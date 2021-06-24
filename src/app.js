@@ -1,5 +1,5 @@
 import * as ROUTES from "./constants/routes";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Signin, Browse, Signup, Home } from "./pages/index";
 
 const App = () => {

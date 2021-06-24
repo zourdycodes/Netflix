@@ -50,4 +50,8 @@ export const Link = styled.a`
   margin-bottom: 20px;
   font-size: 14px;
   text-decoration: none;
+  :hover {
+    transition: all 0.2s;
+    color: #222222;
+  }
 `;

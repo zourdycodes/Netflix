@@ -46,7 +46,7 @@ export const Image = styled.img`
 `;
 
 export const Title = styled.h1`
-  font-size: 50px;
+  font-size: 47px;
   line-height: 1.1;
   margin-bottom: 8px;
 
@@ -56,7 +56,7 @@ export const Title = styled.h1`
 `;
 
 export const SubTitle = styled.h2`
-  font-size: 26px;
+  font-size: 25px;
   font-weight: normal;
   line-height: normal;
 
