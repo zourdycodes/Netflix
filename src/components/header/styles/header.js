@@ -2,16 +2,24 @@ import styled from "styled-components/macro";
 import { Link as ReactRouterLink } from "react-router-dom";
 // `../images/misc/${src}.jpg` : "../images/misc/home-bg.jpg"
 
+//warn ==> url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) for passing the props/changing the header background if we passing some src values
+
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
 
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)), url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left / cover
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)), url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left / cover
     no-repeat;
 
   @media (max-width: 1100px) {
     ${({ dontShowOnSmallViewPort }) =>
       dontShowOnSmallViewPort && `background: none;`}
+  }
+  
+  @media (max-width: 1000px) {
+
+    /* background-position: 38% 100%; */
+    /* background-size: contain; */
   }
 `;
 
@@ -143,6 +151,8 @@ export const Dropdown = styled.div`
       cursor: default;
     }
   }
+  
+  //warn => picture component is button
   button {
     margin-right: 10px;
   }
@@ -161,29 +171,42 @@ export const Profile = styled.div`
   button {
     cursor: pointer;
   }
+  
+  //warn reveal the dropdown when its hovered
   &:hover > ${Dropdown} {
     display: flex;
     flex-direction: column;
   }
 `;
 
+//warn => additional styles for Container component
 export const Feature = styled(Container)`
   padding: 150px 0 500px 0;
   flex-direction: column;
   align-items: normal;
   width: 50%;
+ 
+  //todo => go back here
   @media (max-width: 1100px) {
-    display: none;
+    /* display: none; */
+    margin: 0 20px;
+    width: 90%;
+    
   }
 `;
 
 export const FeatureCallOut = styled.h2`
-  color: white;
-  font-size: 50px;
+  color: #DDDDDD;
+  font-size: 45px;
   line-height: normal;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
   margin: 0;
+  padding-top: 30px;
+  
+  @media (max-width: 1000px) {
+    font-size: 35px;
+  }
 `;
 
 export const Text = styled.p`
@@ -191,6 +214,10 @@ export const Text = styled.p`
   font-size: 22px;
   line-height: normal;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+
+  @media (max-width: 1000px) {
+    font-size: 19px;
+  }
 `;
 
 export const Logo = styled.img`

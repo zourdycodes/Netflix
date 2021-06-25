@@ -33,5 +33,9 @@ export const GlobalStyles = createGlobalStyle`
     background-color: red;
     color: white;
   }
+  
+  span {
+    color: red;
+  }
 
 `;
