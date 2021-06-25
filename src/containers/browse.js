@@ -1,13 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
 import { SelectProfileContainer } from "./profiles";
 import { FirebaseContext } from "../context/firebase";
-import { Loading, Header } from "../components";
+import { Loading, Header, Card } from "../components";
 import * as ROUTES from "../constants/routes";
 import logo from "../logo.svg";
+import FooterContainer from "../containers/footer";
 
 export default function BrowseContainer({ slides }) {
+  const [category, setCategory] = useState("series");
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [slidesRows, setSlidesRows] = useState([]);
 
   //warn => little bit hack
   //warn => profile Object will appear if the user oncClick is triggered
@@ -16,6 +20,10 @@ export default function BrowseContainer({ slides }) {
       setLoading(false);
     }, 3000);
   }, [profile.displayName]);
+
+  useEffect(() => {
+    setSlidesRows(slides[category]);
+  }, [category, slides]);
 
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
@@ -28,11 +36,25 @@ export default function BrowseContainer({ slides }) {
         <Header.Frame>
           <Header.Group>
             <Header.Logo src={logo} to={ROUTES.HOME} />
-            <Header.TextLink>Series</Header.TextLink>
-            <Header.TextLink>Film</Header.TextLink>
+            <Header.TextLink
+              onClick={() => setCategory("series")}
+              active={category === "series" ? "true" : "false"}
+            >
+              Series
+            </Header.TextLink>
+            <Header.TextLink
+              onClick={() => setCategory("films")}
+              active={category === "films" ? "true" : "false"}
+            >
+              Film
+            </Header.TextLink>
           </Header.Group>
 
           <Header.Group>
+            <Header.Search
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
             <Header.Profile>
               <Header.Picture src={user.photoURL} />
               <Header.Dropdown>
@@ -62,8 +84,33 @@ export default function BrowseContainer({ slides }) {
             secret experiments, terrifying supernatural forces and one strange
             little girl.
           </Header.Text>
+          <Header.PlayButton>Play</Header.PlayButton>
         </Header.Feature>
       </Header>
+      {/* <Header.Shadow /> */}
+
+      <Card.Group>
+        {slidesRows.map((slideItem) => (
+          <Card key={`${category}--${slideItem.title.toLowerCase()}`}>
+            <Card.Title>{slideItem.title}</Card.Title>
+            <Card.Entities>
+              {slideItem.data.map((item) => (
+                <Card.Item key={item.docId} item={item}>
+                  <Card.Image
+                    src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`}
+                  />
+                  <Card.Meta>
+                    <Card.SubTitle>{item.title}</Card.SubTitle>
+                    <Card.Text>{item.description}</Card.Text>
+                  </Card.Meta>
+                </Card.Item>
+              ))}
+            </Card.Entities>
+          </Card>
+        ))}
+      </Card.Group>
+
+      <FooterContainer />
     </>
   ) : (
     <>

@@ -23,6 +23,11 @@ export const Background = styled.div`
   }
 `;
 
+// export const Shadow = styled.div`
+//   /* background-image: linear-gradient(rgba(0, 0, 0, 15)); */
+//   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
+// `;
+
 export const Container = styled.div`
   display: flex;
   margin: 0 56px;
@@ -64,6 +69,8 @@ export const SearchInput = styled.input`
   height: 30px;
   font-size: 14px;
   border-radius: 4px;
+  
+  //warn => animation hacks
   margin-left: ${({ active }) => (active === true ? "10px" : "0")};
   padding: ${({ active }) => (active === true ? "0 10px" : "0")};
   opacity: ${({ active }) => (active === true ? "1" : "0")};
@@ -202,7 +209,7 @@ export const FeatureCallOut = styled.h2`
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
   margin: 0;
-  padding-top: 30px;
+  
   
   @media (max-width: 1000px) {
     font-size: 35px;
