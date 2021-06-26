@@ -106,6 +106,9 @@ export default function BrowseContainer({ slides }) {
                 </Card.Item>
               ))}
             </Card.Entities>
+            <Card.Feature category={category}>
+              <p>hello</p>
+            </Card.Feature>
           </Card>
         ))}
       </Card.Group>
